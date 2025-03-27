@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Green</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Load libraries -->
+    <script src="lib/xlsx.full.min.js"></script>
+    <script src="lib/lodash.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Feature Release Calendar Heatmap Visualization</h1>
+        
+        <div class="controls">
+            <div class="control-group">
+                <label>View:</label>
+                <div class="tabs">
+                    <button class="tab-btn active" data-view="yearly">Yearly</button>
+                    <button class="tab-btn" data-view="monthly">Monthly</button>
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <label>Year:</label>
+                <select id="year-select">
+                    <option value="2022">2022</option>
+                    <option value="2023" selected>2023</option>
+                    <option value="2024">2024</option>
+                </select>
+            </div>
+            
+            <div class="control-group" id="month-control" style="display: none;">
+                <label>Month:</label>
+                <select id="month-select">
+                    <option value="1">January</option>
+                    <option value="2">February</option>
+                    <option value="3">March</option>
+                    <option value="4">April</option>
+                    <option value="5">May</option>
+                    <option value="6">June</option>
+                    <option value="7">July</option>
+                    <option value="8">August</option>
+                    <option value="9">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label>Application:</label>
+                <div class="tabs">
+                    <button class="tab-btn active" data-app="all">All</button>
+                    <button class="tab-btn" data-app="zoom">Zoom</button>
+                    <button class="tab-btn" data-app="firefox">Firefox</button>
+                    <button class="tab-btn" data-app="webex">Webex</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="legend">
+            <div class="legend-title">Legend:</div>
+            <div class="legend-item">
+                <div class="legend-bubble zoom-color"></div>
+                <span>Zoom</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-bubble firefox-color"></div>
+                <span>Firefox</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-bubble webex-color"></div>
+                <span>Webex</span>
+            </div>
+            <div class="legend-note">
+                Note: Bubble size represents the number of features released
+            </div>
+        </div>
+        
+        <div class="stats-container" id="stats">
+            <!-- Statistics will be inserted here -->
+        </div>
+        
+        <div class="calendar-container" id="calendar">
+            <div class="loading" id="loading">Loading data...</div>
+        </div>
+        
+        <div class="notes">
+            <p><strong>About this Visualization:</strong></p>
+            <ul>
+                <li><strong>Calendar Heatmap:</strong> Cell color intensity indicates the total number of features released on that day</li>
+                <li><strong>Bubble Chart Overlay:</strong> Colored bubbles represent features from each application (blue = Zoom, orange = Firefox, green = Webex)</li>
+                <li><strong>Bubble Size:</strong> Proportional to the number of features released by that application on that day</li>
+                <li><strong>Temporal Analysis:</strong> Easily identify patterns in feature releases across days, months, and years</li>
+                <li><strong>Application Comparison:</strong> Visually compare release patterns across the three applications</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
